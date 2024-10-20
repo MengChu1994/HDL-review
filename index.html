@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review for Hidilao Century City</title>
+    <style>
+        body {
+            background-color: #ff4d4d;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        #review {
+            background-color: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 80%;
+            font-size: 18px;
+            max-width: 600px;
+        }
+        button {
+            background-color: #ffffff;
+            color: #ff4d4d;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            width: 200px;
+        }
+        button:hover {
+            background-color: #ffe6e6;
+        }
+        .link-buttons {
+            margin-top: 20px;
+        }
+        a {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Review for Hidilao Century City</h1>
+    <div id="review">Click "Generate Review" to get a random 5-star review!</div>
+
+    <button onclick="generateReview()">Generate Review</button>
+    <button onclick="copyReview()">Copy Review</button>
+
+    <div class="link-buttons">
+        <a href="https://www.yelp.com/writeareview/biz/rfVUBEy2i9aHsKjsJbqZwA?return_url=%2Fbiz%2FrfVUBEy2i9aHsKjsJbqZwA&review_origin=biz-details-war-button" target="_blank">Yelp Review</a>
+        <a href="https://search.google.com/local/reviews?placeid=ChIJ82pfBe27woARVYJAhWaHRV4&q=google+review+haidilao+century+city&hl=en&gl=US" target="_blank">Google Review</a>
+    </div>
+
+    <script>
+        const reviews = {
+            service: [
+                "The service here is truly exceptional! The staff was attentive, friendly, and ensured we had an amazing time.",
+                "Incredible service! The staff was prompt, helpful, and always smiling, making the entire experience delightful.",
+                "The customer service was top-notch! Every request was handled with a smile, and the staff genuinely cares about their guests.",
+                "I was blown away by the level of service. The staff was always checking in to make sure everything was perfect.",
+                "Fantastic service! The team was not only efficient but went the extra mile to make sure we were comfortable."
+            ],
+            food: [
+                "The food is simply outstanding. Every ingredient was fresh, and the hotpot broths are packed with flavor!",
+                "Delicious food! The meat and vegetable selections were plentiful, and everything tasted incredibly fresh.",
+                "The quality of the food is unbeatable. From the tender meats to the rich broths, everything was perfect.",
+                "The food exceeded our expectations. The broth flavors were authentic, and the ingredients were of the highest quality.",
+                "Every dish was a hit! The seafood was fresh, and the variety of dipping sauces was a nice touch."
+            ],
+            drinks: [
+                "Their drink menu is fantastic, especially the creative cocktails and refreshing teas that complement the hotpot experience perfectly.",
+                "Great drink selection! The iced teas were refreshing, and the specialty cocktails paired well with the food.",
+                "The drinks were just as good as the food. We especially loved the fruit teas and the unique cocktail options.",
+                "The beverages were spot on! The non-alcoholic options were delicious and complemented the spicy food beautifully.",
+                "They offer a wide variety of drinks, from refreshing juices to signature cocktails, which really elevated the meal."
+            ],
+            environment: [
+                "The atmosphere is inviting and modern, with cozy seating and a vibrant energy that adds to the dining experience.",
+                "The environment was clean, spacious, and beautifully decorated, perfect for both casual dining and special occasions.",
+                "The ambiance was lively yet relaxing, with a comfortable setting that's great for friends, families, or dates.",
+                "The restaurant had a warm, welcoming vibe with sleek decor and plenty of space for groups or more intimate dining.",
+                "The ambiance is just right – stylish yet comfortable. You can feel the attention to detail in every corner."
+            ]
+        };
+
+        function getRandomReview() {
+            const randomService = reviews.service[Math.floor(Math.random() * reviews.service.length)];
+            const randomFood = reviews.food[Math.floor(Math.random() * reviews.food.length)];
+            const randomDrinks = reviews.drinks[Math.floor(Math.random() * reviews.drinks.length)];
+            const randomEnvironment = reviews.environment[Math.floor(Math.random() * reviews.environment.length)];
+            
+            return `${randomService} ${randomFood} ${randomDrinks} ${randomEnvironment}`;
+        }
+
+        function generateReview() {
+            const review = getRandomReview();
+            document.getElementById("review").innerText = review;
+        }
+
+        function copyReview() {
+            const review = document.getElementById("review").innerText;
+            navigator.clipboard.writeText(review).then(() => {
+                alert("Review copied to clipboard!");
+            });
+        }
+    </script>
+
+</body>
+</html>
